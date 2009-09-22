@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:tal="http://xml.zope.org/namespaces/tal"
+	  xmlns:metal="http://xml.zope.org/namespaces/metal"
+	  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	  lang="en"
+		metal:use-macro="here/main_template/macros/master"
+	  i18n:domain="fui.memberlist">
+
+	<body>
+		<div metal:fill-slot="main">
+			<h1 class="documentFirstHeading">
+				<span metal:use-macro="python:context.widget('title', mode='view')" />
+			</h1>
+
+			<!--<div tal:content="python:here.portal_membership.getPersonalPortrait().absolute_url()"/>-->
+			<!--<div tal:content="python:dir(here.portal_membership)"/>-->
+
+			<div class="fui-members">
+				<h2>Nåværende FUI-medlemmer</h2>
+				<div class="fui-member-card"
+					tal:repeat="m view/currentMembers">
+
+					<img class="fui-member-portrait" tal:attributes="src m/portrait_url"/>
+
+					<div class="fui-member-info">
+						<h3 tal:content="m/fullname"/>
+
+						<div class="fui-member-email">
+							<a tal:attributes="href python:'mailto:' + m['email']" tal:content="m/username"/>
+						</div>
+					</div>
+	
+					<div class="fui-member-more">
+						<a tal:condition="m/homeFolder" tal:attributes="href m/homeFolder">
+							mer info
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="fui-members fui-members-old">
+				<h2>Tidligere FUI-medlemmer</h2>
+				<div class="fui-member-card"
+						tal:repeat="m view/previousMembers">
+
+					<img class="fui-member-portrait" tal:attributes="src m/portrait_url"/>
+
+					<div class="fui-member-info">
+						<h3 tal:content="m/fullname"/>
+
+						<div class="fui-member-email">
+							<a tal:attributes="href python:'mailto:' + m['email']" tal:content="m/username"/>
+						</div>
+					</div>
+	
+					<div class="fui-member-more">
+						<a tal:condition="m/homeFolder" tal:attributes="href m/homeFolder">
+							mer info
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

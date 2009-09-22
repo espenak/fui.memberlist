@@ -1,0 +1,25 @@
+===============================
+fui.memberlist functional tests
+===============================
+
+
+Setting up and log in as admin
+------------------------------
+
+	>>> browser = self.browser
+	>>> portal_url = self.portal.absolute_url()
+	>>> self.loginAdminClick()
+
+
+Make sure admin has links to add
+--------------------------------
+	>>> browser.open(portal_url)
+	>>> browser.getLink(id='memberlist').url.endswith("createObject?type_name=MemberList")
+	True
+	
+
+Add MemberList as admin
+-----------------------------
+	
+	>>> browser.open(portal_url)
+	>>> browser.getLink(id='memberlist').click()

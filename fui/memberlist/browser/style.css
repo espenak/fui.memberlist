@@ -1,0 +1,65 @@
+/* A list of old or current members. */
+div.fui-members {
+}
+
+div.fui-members a {
+	color: #444;
+}
+
+
+
+div.fui-members h2 {
+	clear: left;
+
+	/* Need to use padding instead of margin because of float */
+	padding-top: 30px;
+	margin-top: 0;
+}
+
+/* Information + portrait */
+div.fui-member-card {
+	padding: 8px;
+	float: left;
+	position: relative;
+	border: 3px dashed #ddd;
+	width: 300px;
+	margin: 20px;
+}
+div.fui-members-old div.fui-member-card {
+}
+
+img.fui-member-portrait {
+	float: left;
+	display: block;
+	border: 1px solid #444;
+}
+
+/* The information about a member */
+div.fui-member-info {
+	margin-left: 90px;
+	height: 90px;
+}
+
+/* Name of member */
+.fui-member-info h3 {
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 1.2em;
+	color: #555;
+}
+
+.fui-member-email {
+	background-image: url("mail_icon.gif");
+	background-repeat: no-repeat;
+	background-position: 0 2px;
+	padding-left: 20px;
+}
+
+div.fui-member-more {
+	text-align: right;
+	height: 18px;
+}
+div.fui-member-more a {
+	font-weight: bold;
+	color: #888;
+}

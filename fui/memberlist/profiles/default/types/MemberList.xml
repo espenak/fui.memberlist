@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<object name="MemberList"
+	meta_type="Factory-based Type Information with dynamic views"
+	i18n:domain="fui.memberlist" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+	 
+	<!-- We give a title and a description, shown in the UI, as well as an icon.
+	-->
+	<property name="title" i18n:translate="">Member List</property>
+	<property name="description"
+		i18n:translate="">A FUI member list.</property>
+
+	<property name="content_meta_type">Filestem Folder</property>
+	<property name="product">fui.memberlist</property>
+	<property name="factory">addMemberList</property>
+ 
+	<!-- The immediate_view is supposed to be the view that is shown immediately
+			after an object is created. Plone currently doesn't use this, however.
+			It will always show the "edit" form during content creation, and then
+			go to the view.
+	 -->
+	<property name="immediate_view">atct_edit</property>
+
+	<property name="global_allow">True</property>
+	<property name="filter_content_types">True</property>
+	<property name="allowed_content_types">
+	</property>
+ 
+	<!-- We do not allow discussion by default -->
+	<property name="allow_discussion">False</property>
+ 
+	<property name="default_view">memberlist</property>
+	<property name="view_methods">
+		<element value="memberlist"/>
+	</property>
+ 
+	<!-- Finally, we define method aliases and actions. For most content
+			types, these are the same. The (Default) alias can reference a
+			view or page template name, but by using a "dynamic views" FTI, we
+			use the "(dynamic view)" pseudo-target to mean "the current selection".
+			The names 'edit', 'sharing' and 'view' are conventions in Plone.
+			
+			Notice how the actions (which are rendered as tabs) use standard
+			URLs which reference the method aliases. You can of course add new
+			method aliases and/or new actions (tabs) if necessary.
+	-->
+	<alias from="(Default)" to="(dynamic view)"/>
+	<alias from="edit" to="atct_edit"/>
+	<alias from="sharing" to="@@sharing"/>
+	<alias from="view" to="memberlist"/>
+
+	<action title="View" action_id="view" category="object" condition_expr=""
+		url_expr="string:${object_url}/" visible="True">
+		<permission value="View" />
+	</action>
+	<action title="Edit" action_id="edit" category="object" condition_expr=""
+			url_expr="string:${object_url}/edit" visible="True">
+		<permission value="Modify portal content"/>
+	</action>
+</object>
