@@ -4,6 +4,10 @@ div.fui-members {
 
 div.fui-members a {
 	color: #444;
+	text-decoration: underline;
+}
+div.fui-members a:hover {
+	color: #000;
 }
 
 
@@ -22,7 +26,7 @@ div.fui-member-card {
 	float: left;
 	position: relative;
 	border: 3px dashed #ddd;
-	width: 300px;
+	width: 325px;
 	margin: 20px;
 }
 div.fui-members-old div.fui-member-card {
@@ -32,12 +36,16 @@ img.fui-member-portrait {
 	float: left;
 	display: block;
 	border: 1px solid #444;
+	max-width: 80px;
+	max-height: 110px;
 }
 
 /* The information about a member */
 div.fui-member-info {
 	margin-left: 90px;
-	height: 90px;
+	height: 110px;
+	width: 230px;
+	overflow: auto;
 }
 
 /* Name of member */
@@ -55,6 +63,10 @@ div.fui-member-info {
 	padding-left: 20px;
 }
 
+.fui-member-description {
+	margin-top: 5px;
+}
+
 div.fui-member-more {
 	text-align: right;
 	height: 18px;
@@ -62,4 +74,5 @@ div.fui-member-more {
 div.fui-member-more a {
 	font-weight: bold;
 	color: #888;
+	text-decoration: none;
 }

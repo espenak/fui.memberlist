@@ -28,6 +28,9 @@
 						<div class="fui-member-email">
 							<a tal:attributes="href python:'mailto:' + m['email']" tal:content="m/username"/>
 						</div>
+
+						<div class="fui-member-description" tal:condition="m/description"
+							tal:content="m/description"/>
 					</div>
 	
 					<div class="fui-member-more">
@@ -41,16 +44,24 @@
 			<div class="fui-members fui-members-old">
 				<h2>Tidligere FUI-medlemmer</h2>
 				<div class="fui-member-card"
-						tal:repeat="m view/previousMembers">
+						tal:repeat="m view/oldMembers">
 
 					<img class="fui-member-portrait" tal:attributes="src m/portrait_url"/>
 
 					<div class="fui-member-info">
 						<h3 tal:content="m/fullname"/>
 
-						<div class="fui-member-email">
+						<div class="fui-member-email" tal:condition="m/email">
 							<a tal:attributes="href python:'mailto:' + m['email']" tal:content="m/username"/>
 						</div>
+
+						<div class="fui-member-homepage" tal:condition="m/homepage">
+							<a tal:attributes="href m/homepage">Personlig webside</a>
+						</div>
+
+						<div class="fui-member-description" tal:condition="m/description"
+							tal:content="m/description"/>
+
 					</div>
 	
 					<div class="fui-member-more">

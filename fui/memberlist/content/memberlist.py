@@ -26,6 +26,27 @@ from fui.memberlist.config import PROJECTNAME
 from fui.memberlist import MemberListMessageFactory as _
 
 
+from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.vocabulary import SimpleVocabulary
+from Products.CMFCore.utils import getToolByName
+from zope.schema.interfaces import IVocabularyFactory
+from zope.interface import directlyProvides
+
+def allMembers(context):
+	terms = []
+
+	pm = context.portal_membership
+	acl_users = getToolByName(context, 'acl_users')
+	for member_id in pm.listMemberIds():
+		user = acl_users.getUserById(member_id)
+		if user is not None:
+			member_name = user.getProperty('fullname') or member_id
+			terms.append(SimpleVocabulary.createTerm(
+				member_id, str(member_id), member_name))
+	return SimpleVocabulary(terms)
+directlyProvides(allMembers, IVocabularyFactory)
+
+
 
 # This is the Archetypes schema, defining fields and widgets. We extend
 # the one from ATContentType's ATFolder with our additional fields.
@@ -34,18 +55,31 @@ schema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 		required = True,
 		searchable = False,
 		storage = atapi.AnnotationStorage(),
-		widget = atapi.LinesWidget(
-				label = u"Current FUI members.",
-				description = "One username on each line.")
+		vocabulary_factory = "fui.memberlist.allMembers",
+		widget = atapi.InAndOutWidget(
+			size = 20,
+			label = u"Current FUI members")
 		),
+
 	atapi.LinesField("exclude",
 		required = True,
 		searchable = False,
 		storage = atapi.AnnotationStorage(),
+		vocabulary_factory = "fui.memberlist.allMembers",
+		widget = atapi.InAndOutWidget(
+			size = 20,
+			label = u"Exclude",
+			description = "Users which are excluded from old members listing.")
+		),
+
+	atapi.LinesField("nonusers",
+		required = True,
+		searchable = False,
+		storage = atapi.AnnotationStorage(),
 		widget = atapi.LinesWidget(
-				label = u"Exclude.",
-				description = "Users which are excluded from this listing. "\
-						"One username on each line.")
+			label = u"Without plone user",
+			description = "Old members without a Plone user. "\
+				"One name on each line.")
 		),
 	))
 

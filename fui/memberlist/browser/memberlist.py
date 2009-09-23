@@ -10,6 +10,8 @@ from plone.memoize.instance import memoize
 from Products.statusmessages.interfaces import IStatusMessage
 
 
+DEFAULT_PORTRAIT_URL = "defaultUser.gif"
+
 
 def cmpMemberDict(a, b):
 	return cmp(a["fullname"], b["fullname"])
@@ -34,13 +36,24 @@ class MemberList(BrowserView):
 		out.sort(cmpMemberDict)
 		return out
 
-	def previousMembers(self):
+	def oldMembers(self):
 		pm = self.ctx.portal_membership
 		out = []
 		for memberId in pm.listMemberIds():
 			if not memberId in self.exclude and not memberId in self.current:
 				member = pm.getMemberById(memberId)
 				out.append(self._memberInfo(memberId, member))
+
+		for name in self.ctx.getNonusers():
+			out.append(dict(
+				username = None,
+				email = None,
+				homeFolder = None,
+				fullname = name,
+				portrait_url = DEFAULT_PORTRAIT_URL,
+				description = None,
+				homepage = None))
+
 		out.sort(cmpMemberDict)
 		return out
 
@@ -50,7 +63,7 @@ class MemberList(BrowserView):
 		if portrait:
 			portrait_url = portrait.absolute_url()
 		else:
-			portrait_url = "defaultUser.gif"
+			portrait_url = DEFAULT_PORTRAIT_URL
 
 		homeFolder = portal.Members.get(memberId)
 		if homeFolder and len(homeFolder.contentItems()) > 0:
@@ -69,5 +82,6 @@ class MemberList(BrowserView):
 				fullname = member.getProperty("fullname"),
 				portrait_url = portrait_url,
 				homeFolder = homeFolder,
-				#description = member.getProperty("description")
+				description = member.getProperty("description"),
+				homepage = member.getProperty("home_page")
 			)

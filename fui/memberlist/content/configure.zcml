@@ -3,14 +3,18 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="fui.memberlist">
 
-    <class class=".memberlist.MemberList">
-        <require
-            permission="zope2.View"
-            interface="..interfaces.IMemberList"
-            />
-        <require
-            permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.IMemberList"
-            />
-    </class>
+	<class class=".memberlist.MemberList">
+		<require
+				permission="zope2.View"
+				interface="..interfaces.IMemberList"
+				/>
+		<require
+				permission="cmf.ModifyPortalContent"
+				set_schema="..interfaces.IMemberList"
+				/>
+	</class>
+
+	<utility 
+		component=".memberlist.allMembers"
+		name="fui.memberlist.allMembers" />
 </configure>
