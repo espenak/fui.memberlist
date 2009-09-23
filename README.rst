@@ -4,8 +4,8 @@ README
 
 Plone product which makes files from the file system available within plone.
 
-    - http://pypi.python.org/pypi/fui.fsbrowse/
-    - http://github.com/espenak/fui.fsbrowse/
+    - http://pypi.python.org/pypi/fui.memberlist/
+    - http://github.com/espenak/fui.memberlist/
 
 
 Install
@@ -13,19 +13,19 @@ Install
 
 You can install this product in Plone using buildout.
 
-    1. Add ``fui.fsbrowse`` to ``buildout.cfg``::
+    1. Add ``fui.memberlist`` to ``buildout.cfg``::
 
         [buildout]
         ...
         eggs =
             ...
-            fui.fsbrowse
+            fui.memberlist
 
         [instance]
         ...
         zcml = 
             ...
-            fui.fsbrowse
+            fui.memberlist
 
     2. Run (maybe backup first..)::
 

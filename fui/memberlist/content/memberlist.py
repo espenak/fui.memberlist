@@ -52,7 +52,7 @@ directlyProvides(allMembers, IVocabularyFactory)
 # the one from ATContentType's ATFolder with our additional fields.
 schema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 	atapi.LinesField("currentmembers",
-		required = True,
+		required = False,
 		searchable = False,
 		storage = atapi.AnnotationStorage(),
 		vocabulary_factory = "fui.memberlist.allMembers",
@@ -62,7 +62,7 @@ schema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 		),
 
 	atapi.LinesField("exclude",
-		required = True,
+		required = False,
 		searchable = False,
 		storage = atapi.AnnotationStorage(),
 		vocabulary_factory = "fui.memberlist.allMembers",
@@ -73,7 +73,7 @@ schema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 		),
 
 	atapi.LinesField("nonusers",
-		required = True,
+		required = False,
 		searchable = False,
 		storage = atapi.AnnotationStorage(),
 		widget = atapi.LinesWidget(
