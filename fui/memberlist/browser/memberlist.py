@@ -44,14 +44,21 @@ class MemberList(BrowserView):
 				member = pm.getMemberById(memberId)
 				out.append(self._memberInfo(memberId, member))
 
-		for name in self.ctx.getNonusers():
+		for u in self.ctx.getNonusers():
+			x = u.split(":", 1)
+			name = x[0]
+			if len(x) == 2:
+				description = x[1]
+			else:
+				description = None
+
 			out.append(dict(
 				username = None,
 				email = None,
 				homeFolder = None,
 				fullname = name,
 				portrait_url = DEFAULT_PORTRAIT_URL,
-				description = None,
+				description = description,
 				homepage = None))
 
 		out.sort(cmpMemberDict)

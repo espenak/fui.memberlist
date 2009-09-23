@@ -10,6 +10,7 @@
 		i18n:translate="">A FUI member list.</property>
 
 	<property name="content_meta_type">Filestem Folder</property>
+	<property name="content_icon">++resource++memberlist.png</property>
 	<property name="product">fui.memberlist</property>
 	<property name="factory">addMemberList</property>
  

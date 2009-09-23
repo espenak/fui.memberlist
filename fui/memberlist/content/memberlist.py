@@ -79,7 +79,9 @@ schema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 		widget = atapi.LinesWidget(
 			label = u"Without plone user",
 			description = "Old members without a Plone user. "\
-				"One name on each line.")
+				"One name followed by an optional : and a " \
+				"short description on each line. " \
+				"Example: 'Ola Normann:v06-h08'.")
 		),
 	))
 

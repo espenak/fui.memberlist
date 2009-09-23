@@ -22,10 +22,10 @@ div.fui-members h2 {
 
 /* Information + portrait */
 div.fui-member-card {
-	padding: 8px;
+	padding: 10px;
 	float: left;
 	position: relative;
-	border: 3px dashed #ddd;
+	border: 1px solid #ddd;
 	width: 325px;
 	margin: 20px;
 }
@@ -38,13 +38,13 @@ img.fui-member-portrait {
 	border: 1px solid #444;
 	max-width: 80px;
 	max-height: 110px;
+	margin: 0 10px 10px 0;
 }
 
 /* The information about a member */
 div.fui-member-info {
-	margin-left: 90px;
 	height: 110px;
-	width: 230px;
+	width: 237px;
 	overflow: auto;
 }
 
@@ -57,19 +57,32 @@ div.fui-member-info {
 }
 
 .fui-member-email {
-	background-image: url("mail_icon.gif");
+	background-image: url("++resource++mail.png");
+}
+
+.fui-member-homepage {
+	background-image: url("++resource++homepage.png");
+}
+
+.fui-member-homepage, .fui-member-email {
 	background-repeat: no-repeat;
 	background-position: 0 2px;
 	padding-left: 20px;
+	height: 18px;
+	margin-bottom: 2px;
+	padding-top: 1px;
 }
 
 .fui-member-description {
 	margin-top: 5px;
+	font-size: 0.8em;
+	color: #555;
 }
 
 div.fui-member-more {
 	text-align: right;
-	height: 18px;
+	height: 16px;
+	margin-top: 7px;
 }
 div.fui-member-more a {
 	font-weight: bold;

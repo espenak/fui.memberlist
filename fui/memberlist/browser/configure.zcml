@@ -17,4 +17,20 @@
 		permission="zope2.View"
 		/>
 
+	<browser:resource
+		name="homepage.png"
+		image="homepage.png"
+		/>
+
+	<browser:resource
+		name="mail.png"
+		image="mail.png"
+		/>
+
+	<browser:resource
+		name="memberlist.png"
+		image="memberlist.png"
+		/>
+
+
 </configure>

@@ -29,6 +29,10 @@
 							<a tal:attributes="href python:'mailto:' + m['email']" tal:content="m/username"/>
 						</div>
 
+						<div class="fui-member-homepage" tal:condition="m/homepage">
+							<a tal:attributes="href m/homepage">Personlig webside</a>
+						</div>
+
 						<div class="fui-member-description" tal:condition="m/description"
 							tal:content="m/description"/>
 					</div>
